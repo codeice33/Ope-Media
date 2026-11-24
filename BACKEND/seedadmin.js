@@ -5,7 +5,7 @@
  * or update your admin login in MongoDB with a bcrypt-hashed password.
  */
 
-require('dotenv').config();
+require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 

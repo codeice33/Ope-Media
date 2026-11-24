@@ -8,7 +8,7 @@
 
 const dns = require('dns');
 dns.setServers(['8.8.8.8', '1.1.1.1']);
-require('dotenv').config();
+require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -19,12 +19,6 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI;
 const JWT_SECRET = process.env.JWT_SECRET;
-
-// Ensure required secrets exist before starting
-if (!MONGODB_URI || !JWT_SECRET) {
-  console.error('❌ Missing MONGODB_URI or JWT_SECRET in your .env file.');
-  process.exit(1);
-}
 
 // =========================================================
 // 1. MIDDLEWARE
@@ -247,18 +241,24 @@ app.put('/api/admin/config', requireAdmin, async (req, res) => {
   }
 });
 
-// =========================================================
-// 6. CONNECT TO MONGODB & START SERVER
-// =========================================================
-mongoose
-  .connect(MONGODB_URI)
-  .then(() => {
-    console.log('✅ Connected to MongoDB');
-    app.listen(PORT, () => {
-      console.log(`🚀 OPE MEDIA API running on http://localhost:${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error('❌ MongoDB connection failed:', err.message);
+module.exports = app;
+
+if (require.main === module) {
+  if (!MONGODB_URI || !JWT_SECRET) {
+    console.error('❌ Missing MONGODB_URI or JWT_SECRET in your .env file.');
     process.exit(1);
-  });
+  }
+
+  mongoose
+    .connect(MONGODB_URI)
+    .then(() => {
+      console.log('✅ Connected to MongoDB');
+      app.listen(PORT, () => {
+        console.log(`🚀 OPE MEDIA API running on http://localhost:${PORT}`);
+      });
+    })
+    .catch((err) => {
+      console.error('❌ MongoDB connection failed:', err.message);
+      process.exit(1);
+    });
+}

@@ -623,9 +623,12 @@
   <script>
     // =========================================================
     // 1. BACKEND API CONFIGURATION
-    // Change this to your live Render/Railway URL when deploying
+    // Use the local API during development and the same-origin API on Vercel.
     // =========================================================
-    const API_BASE_URL = 'http://localhost:5000/api';
+    const isLocalDevelopment =
+      window.location.protocol === 'file:' ||
+      ['localhost', '127.0.0.1'].includes(window.location.hostname);
+    const API_BASE_URL = isLocalDevelopment ? 'http://localhost:5000/api' : '/api';
 
     const TOKEN_KEY = 'ope_media_admin_jwt_v1';
     const EMAIL_KEY = 'ope_media_admin_email_v1';
@@ -1018,7 +1021,7 @@
           setView('admin');
         }
       } catch (err) {
-        errorBox.textContent = 'Unable to reach backend server. Make sure your Node/MongoDB API is running.';
+        errorBox.textContent = 'Unable to reach the backend API. Check the server configuration and try again.';
         errorBox.classList.remove('hidden');
       }
 
