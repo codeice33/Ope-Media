@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OPE MEDIA Start Building High-Value Digital Skills</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            sans: ['Inter', 'Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            obsidian: '#09090B',
+            surface: '#111115',
+            surfaceElevated: '#17171D',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Dynamic Headline Accent Variables (Default: Crimson Red to match high-converting copy) */
+    :root {
+      --headline-accent: #e92448;
+      --headline-accent-soft: rgba(244, 63, 94, 0.14);
+      --headline-accent-border: rgba(244, 63, 94, 0.36);
+      --headline-ambient: rgba(244, 63, 94, 0.14);
+    }
+
+    body {
+      background-color: #09090B;
+      color: #FAFAFA;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient Radial Lighting & Subtle Architectural Grid */
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(65% 48% at 50% -8%, var(--headline-ambient), transparent 72%),
+        radial-gradient(50% 40% at 50% 108%, rgba(16, 185, 129, 0.12), transparent 72%),
+        #09090B;
+      transition: background 0.5s ease;
+    }
+
+    .ambient-grid {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(ellipse 80% 65% at 50% 35%, black 30%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 65% at 50% 35%, black 30%, transparent 100%);
+    }
+
+    /* Glassmorphic Card */
+    .glass-card {
+      background: linear-gradient(180deg, rgba(20, 20, 26, 0.88) 0%, rgba(13, 13, 17, 0.94) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.085);
+      box-shadow:
+        0 24px 64px -20px rgba(0, 0, 0, 0.85),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    }
+
+    /* Dynamic Headline Accent Utility */
+    .text-headline-accent {
+      color: var(--headline-accent);
+    }
+    .bg-headline-accent-soft {
+      background-color: var(--headline-accent-soft);
+    }
+    .border-headline-accent {
+      border-color: var(--headline-accent-border);
+    }
+
+    /* High-Converting Emerald CTA Button */
+    .cta-emerald {
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      box-shadow:
+        0 12px 32px -8px rgba(16, 185, 129, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease, filter 0.2s ease;
+    }
+    .cta-emerald:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 18px 38px -8px rgba(16, 185, 129, 0.62),
+        inset 0 1px 0 rgba(255, 255, 255, 0.32);
+      filter: brightness(1.05);
+    }
+    .cta-emerald:active {
+      transform: translateY(0) scale(0.99);
+    }
+
+    /* Subtle Entry & Shake Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up {
+      animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes gentleShake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-6px); }
+      40% { transform: translateX(6px); }
+      60% { transform: translateX(-4px); }
+      80% { transform: translateX(4px); }
+    }
+    .animate-shake {
+      animation: gentleShake 0.42s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #09090B; }
+    ::-webkit-scrollbar-thumb { background: #27272A; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3F3F46; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-emerald-500/30 selection:text-white">
+  <!-- Ambient Background Layers -->
+  <div class="ambient-bg"></div>
+  <div class="ambient-grid"></div>
+
+  <!-- Toast Notification Stack -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2.5 max-w-sm w-[calc(100%-2.5rem)] pointer-events-none"></div>
+
+  <!-- ========================================================= -->
+  <!-- 1. PUBLIC REGISTRATION LANDING PAGE                       -->
+  <!-- ========================================================= -->
+  <main id="public-view" class="w-full min-h-screen flex items-center justify-center px-4 py-10 sm:py-14">
+    <!-- Loading Skeleton -->
+    <div id="public-skeleton" class="glass-card w-full max-w-[520px] rounded-3xl p-6 sm:p-10 animate-pulse">
+      <div class="flex justify-center mb-6">
+        <div class="h-9 w-36 rounded-full bg-white/10"></div>
+      </div>
+      <div class="space-y-3 mb-7 flex flex-col items-center">
+        <div class="h-5 w-28 rounded-lg bg-white/10"></div>
+        <div class="h-8 w-4/5 rounded-lg bg-white/10"></div>
+        <div class="h-8 w-3/5 rounded-lg bg-white/10"></div>
+        <div class="h-4 w-48 rounded-lg bg-white/10 mt-2"></div>
+      </div>
+      <div class="space-y-3 mb-6">
+        <div class="h-14 w-full rounded-2xl bg-white/5"></div>
+        <div class="h-14 w-full rounded-2xl bg-white/5"></div>
+        <div class="h-14 w-full rounded-2xl bg-white/5"></div>
+      </div>
+      <div class="h-20 w-full rounded-2xl bg-white/5 mb-6"></div>
+      <div class="h-14 w-full rounded-2xl bg-emerald-500/20"></div>
+    </div>
+
+    <!-- Main Public Registration Card -->
+    <article id="public-card" class="hidden glass-card w-full max-w-[520px] rounded-3xl p-6 sm:p-10 animate-fade-up">
+      <!-- Brand Monogram Pill -->
+      <div class="flex justify-center mb-7">
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10">
+          <span
+            id="public-monogram"
+            class="w-6 h-6 rounded-full bg-headline-accent-soft border border-headline-accent text-headline-accent font-display font-extrabold text-[10px] tracking-wider flex items-center justify-center"
+          >
+            OPE
+          </span>
+          <span
+            id="public-brand-name"
+            class="font-display font-bold text-xs tracking-[0.16em] uppercase text-zinc-200"
+          >
+            OPE MEDIA
+          </span>
+        </div>
+      </div>
+
+      <!-- Headline Stack -->
+      <header class="text-center mb-7">
+        <p id="public-headline-top" class="font-display font-semibold text-base sm:text-lg text-zinc-200 mb-1.5">
+          In order to
+        </p>
+        <h1
+          id="public-headline-main"
+          class="font-display font-extrabold text-2xl sm:text-[31px] leading-[1.2] tracking-tight text-headline-accent mb-5"
+        >
+          Start Building High-Value Digital Skills...
+        </h1>
+        <p
+          id="public-subheading"
+          class="inline-block font-display font-bold text-sm sm:text-base text-white underline underline-offset-[6px] decoration-2 decoration-white/35"
+        >
+          You Will Need These 3 Things
+        </p>
+      </header>
+
+      <!-- 3 Requirements Checklist -->
+      <ul class="space-y-3 mb-6">
+        <li class="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07]">
+          <span class="w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <span id="public-req-1" class="text-sm sm:text-[15px] text-zinc-200 leading-relaxed">
+            An internet-connected smartphone, tablet or laptop
+          </span>
+        </li>
+
+        <li class="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07]">
+          <span class="w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <span id="public-req-2" class="text-sm sm:text-[15px] text-zinc-200 leading-relaxed">
+            1–2 hrs a day
+          </span>
+        </li>
+
+        <li class="flex items-start gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07]">
+          <span class="w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <span id="public-req-3" class="text-sm sm:text-[15px] text-zinc-200 leading-relaxed">
+            A spirit of implementation and dedication
+          </span>
+        </li>
+      </ul>
+
+      <!-- Interactive Confirmation Callout Box -->
+      <div
+        id="confirm-box"
+        class="mb-6 rounded-2xl bg-emerald-500/[0.07] border border-emerald-500/25 border-l-4 border-l-emerald-500 p-4 transition-colors duration-200"
+      >
+        <label for="confirm-checkbox" class="flex items-start gap-3 cursor-pointer select-none">
+          <input
+            id="confirm-checkbox"
+            type="checkbox"
+            checked
+            class="mt-0.5 w-5 h-5 rounded-md accent-emerald-500 cursor-pointer shrink-0"
+          />
+          <span id="public-confirm-text" class="text-xs sm:text-sm text-zinc-200 leading-relaxed">
+            <strong class="text-white font-bold">YES!</strong> I have these 3 things and I'm ready to start learning and applying these skills.
+          </span>
+        </label>
+      </div>
+
+      <!-- Primary High-Converting Emerald CTA -->
+      <button
+        id="public-cta-btn"
+        type="button"
+        class="cta-emerald w-full py-4 px-5 rounded-2xl font-display font-extrabold text-sm sm:text-base tracking-wide text-white uppercase inline-flex items-center justify-center gap-2.5 cursor-pointer"
+      >
+        <span id="public-cta-text">CLICK HERE TO REGISTER NOW!</span>
+        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+
+      <!-- Clean Footer (Hidden 5-tap admin trigger) -->
+      <footer class="mt-7 pt-5 border-t border-white/[0.07] text-center">
+        <p
+          id="secret-footer-trigger"
+          class="inline-block text-xs text-zinc-500 select-none cursor-default"
+        >
+          © 2026 OPE MEDIA
+        </p>
+      </footer>
+    </article>
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- 2. HIDDEN /ADMIN PORTAL: SIGN IN                          -->
+  <!-- ========================================================= -->
+  <section id="admin-login-view" class="hidden w-full min-h-screen flex items-center justify-center px-4 py-10 animate-fade-up">
+    <div class="glass-card w-full max-w-md rounded-3xl p-6 sm:p-8 shadow-2xl">
+      <div class="flex items-center justify-between mb-6">
+        <button
+          id="login-back-btn"
+          type="button"
+          class="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-400 hover:text-white transition cursor-pointer py-1"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Back to Site
+        </button>
+        <span class="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-[11px] font-mono font-semibold">
+          /admin
+        </span>
+      </div>
+
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-11 h-11 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-center font-display font-extrabold text-xs tracking-wider text-white">
+          OPE
+        </div>
+        <div>
+          <h1 class="font-display font-bold text-xl text-white">OPE MEDIA Admin</h1>
+          <p id="auth-subtitle" class="text-xs text-zinc-400">Sign in to manage your registration page</p>
+        </div>
+      </div>
+
+      <!-- Auth Error Message -->
+      <div id="auth-error-box" class="hidden mb-4 p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-xs text-rose-300 leading-relaxed"></div>
+
+      <form id="admin-auth-form" class="space-y-4">
+        <div>
+          <label for="auth-email-input" class="block text-xs font-medium text-zinc-300 mb-1.5">Email Address</label>
+          <input
+            id="auth-email-input"
+            type="email"
+            required
+            autocomplete="email"
+            placeholder="Enter your admin email"
+            class="w-full px-4 py-3 rounded-xl bg-obsidian/90 border border-white/10 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-emerald-500/60 transition"
+          />
+        </div>
+
+        <div>
+          <label for="auth-password-input" class="block text-xs font-medium text-zinc-300 mb-1.5">Password</label>
+          <div class="relative">
+            <input
+              id="auth-password-input"
+              type="password"
+              required
+              minlength="6"
+              autocomplete="current-password"
+              placeholder="Enter your password"
+              class="w-full pl-4 pr-11 py-3 rounded-xl bg-obsidian/90 border border-white/10 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-emerald-500/60 transition"
+            />
+            <button
+              id="toggle-password-btn"
+              type="button"
+              aria-label="Toggle password visibility"
+              class="absolute right-2.5 top-1/2 -translate-y-1/2 p-1.5 rounded-lg text-zinc-400 hover:text-white transition cursor-pointer"
+            >
+              <svg id="eye-icon-open" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg id="eye-icon-closed" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <button
+          id="auth-submit-btn"
+          type="submit"
+          class="cta-emerald w-full py-3.5 px-4 rounded-xl font-display font-bold text-sm text-white cursor-pointer mt-2"
+        >
+          Sign In
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 3. HIDDEN /ADMIN PORTAL: FULL DASHBOARD                   -->
+  <!-- ========================================================= -->
+  <section id="admin-dashboard-view" class="hidden w-full max-w-4xl mx-auto px-4 sm:px-6 pt-6 pb-16 flex-1 flex flex-col animate-fade-up">
+    <!-- Admin Header -->
+    <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-white/10">
+      <div class="flex items-center gap-3.5">
+        <div class="w-11 h-11 rounded-2xl bg-emerald-500/15 border border-emerald-500/35 flex items-center justify-center font-display font-extrabold text-sm text-emerald-400 shrink-0">
+          OPE
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2 flex-wrap">
+            <h1 class="font-display font-bold text-xl sm:text-2xl text-white">OPE MEDIA Admin</h1>
+            <span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 text-[10px] font-semibold uppercase tracking-wider">Live Sync</span>
+          </div>
+          <p class="text-xs text-zinc-400 mt-0.5 truncate">
+            Signed in as <span id="admin-user-email" class="text-zinc-200 font-medium">—</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2.5 shrink-0">
+        <button
+          id="admin-view-public-btn"
+          type="button"
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-white transition cursor-pointer"
+        >
+          <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+          View Public Page
+        </button>
+        <button
+          id="admin-logout-btn"
+          type="button"
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-rose-500/15 hover:text-rose-300 border border-white/10 hover:border-rose-500/30 text-xs font-semibold text-zinc-300 transition cursor-pointer"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+          Sign Out
+        </button>
+      </div>
+    </header>
+
+    <!-- 1. Quick Stats Bar -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+      <div class="glass-card rounded-2xl p-5 flex flex-col justify-between">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-medium text-zinc-400">Registration Button Clicks</span>
+          <div class="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+        </div>
+        <div class="flex items-end justify-between gap-3">
+          <div>
+            <div id="stat-total-clicks" class="font-display font-extrabold text-3xl text-white">0</div>
+            <p class="text-[11px] text-zinc-500 mt-1">Live tracked registrations</p>
+          </div>
+          <button
+            id="reset-clicks-btn"
+            type="button"
+            class="px-2.5 py-1.5 rounded-lg bg-white/5 hover:bg-rose-500/15 hover:text-rose-300 border border-white/10 hover:border-rose-500/30 text-[11px] font-semibold text-zinc-400 transition cursor-pointer shrink-0"
+          >
+            Reset Clicks
+          </button>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-5">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-medium text-zinc-400">Destination URL Status</span>
+          <span id="stat-url-badge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 text-[10px] font-semibold uppercase">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Active
+          </span>
+        </div>
+        <div id="stat-current-url" class="text-xs font-mono text-zinc-200 truncate mt-2 bg-obsidian/70 px-3 py-2 rounded-xl border border-white/10">
+          https://wa.me/2348000000000
+        </div>
+        <p class="text-[11px] text-zinc-500 mt-1.5">Opens in a new tab on click</p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-5 flex flex-col justify-between">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-medium text-zinc-400">Quick Verification</span>
+          <div class="w-8 h-8 rounded-xl bg-white/10 text-zinc-200 flex items-center justify-center">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+          </div>
+        </div>
+        <button
+          id="test-live-link-btn"
+          type="button"
+          class="w-full mt-2 py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-xs font-semibold text-white inline-flex items-center justify-center gap-2 transition cursor-pointer"
+        >
+          <span>Test Live Link</span>
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- 2. Primary Registration Link Card (Top Priority) -->
+    <form id="primary-link-form" class="glass-card rounded-3xl p-6 sm:p-7 mb-6 border-emerald-500/25">
+      <div class="flex items-center justify-between gap-3 mb-5">
+        <div>
+          <span class="inline-block text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-400 mb-1">Primary Action</span>
+          <h2 class="font-display font-bold text-lg sm:text-xl text-white">Registration Destination Link</h2>
+        </div>
+        <div class="w-10 h-10 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+        <div>
+          <label for="input-destination-url" class="block text-xs font-medium text-zinc-300 mb-1.5">Destination URL (must start with https://) *</label>
+          <input
+            id="input-destination-url"
+            type="url"
+            required
+            placeholder="https://wa.me/2348000000000"
+            class="w-full px-4 py-3 rounded-xl bg-obsidian/90 border border-white/10 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-emerald-500/60 transition"
+          />
+        </div>
+        <div>
+          <label for="input-cta-text" class="block text-xs font-medium text-zinc-300 mb-1.5">CTA Button Text *</label>
+          <input
+            id="input-cta-text"
+            type="text"
+            required
+            maxlength="60"
+            placeholder="CLICK HERE TO REGISTER NOW!"
+            class="w-full px-4 py-3 rounded-xl bg-obsidian/90 border border-white/10 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-emerald-500/60 transition"
+          />
+        </div>
+      </div>
+
+      <button
+        id="save-link-btn"
+        type="submit"
+        class="cta-emerald w-full sm:w-auto px-7 py-3.5 rounded-xl font-display font-bold text-sm text-white inline-flex items-center justify-center gap-2 cursor-pointer"
+      >
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Save &amp; Publish Link</span>
+      </button>
+    </form>
+
+    <!-- 3. Write-Up & Copy Editor -->
+    <form id="full-settings-form" class="space-y-6">
+      <div class="glass-card rounded-3xl p-6 sm:p-7 space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-white/10">
+          <div>
+            <h2 class="font-display font-bold text-lg text-white">Write-Up &amp; Copy Editor</h2>
+            <p class="text-xs text-zinc-400 mt-0.5">Edit any headline, checklist requirement, confirmation text, or footer copy.</p>
+          </div>
+          <button
+            id="reset-copy-btn"
+            type="button"
+            class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-zinc-300 hover:text-white transition cursor-pointer shrink-0"
+          >
+            Reset to Default Copy
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="input-headline-top" class="block text-xs font-medium text-zinc-300 mb-1.5">Intro Line</label>
+            <input id="input-headline-top" type="text" maxlength="80" class="w-full px-4 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30" />
+          </div>
+          <div>
+            <label for="input-headline-main" class="block text-xs font-medium text-zinc-300 mb-1.5">Main Headline</label>
+            <input id="input-headline-main" type="text" maxlength="120" class="w-full px-4 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30" />
+          </div>
+        </div>
+
+        <div>
+          <label for="input-subheading" class="block text-xs font-medium text-zinc-300 mb-1.5">Subheading (Underlined)</label>
+          <input id="input-subheading" type="text" maxlength="100" class="w-full px-4 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30" />
+        </div>
+
+        <!-- 3 Requirements -->
+        <div class="space-y-3 pt-1">
+          <span class="block text-xs font-semibold uppercase tracking-wider text-zinc-400">3 Requirement Items</span>
+          <div class="grid grid-cols-1 gap-3">
+            <input id="input-req-1" type="text" maxlength="140" placeholder="Requirement 1" class="w-full px-4 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30" />
+            <input id="input-req-2" type="text" maxlength="140" placeholder="Requirement 2" class="w-full px-4 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30" />
+            <input id="input-req-3" type="text" maxlength="140" placeholder="Requirement 3" class="w-full px-4 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="input-confirm-text" class="block text-xs font-medium text-zinc-300 mb-1.5">Confirmation Box Text</label>
+            <textarea id="input-confirm-text" rows="2" maxlength="240" class="w-full px-4 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30 resize-none"></textarea>
+          </div>
+          <div>
+            <label for="input-footer-text" class="block text-xs font-medium text-zinc-300 mb-1.5">Footer Text</label>
+            <input id="input-footer-text" type="text" maxlength="80" class="w-full px-4 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-white text-sm focus:outline-none focus:border-white/30" />
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p class="text-xs text-zinc-400">
+            Changes sync immediately to the live public page.
+          </p>
+          <button
+            id="save-all-settings-btn"
+            type="submit"
+            class="w-full sm:w-auto px-6 py-3 rounded-xl bg-white text-obsidian font-display font-bold text-sm hover:bg-zinc-200 active:scale-[0.99] transition cursor-pointer shrink-0"
+          >
+            Save Changes
+          </button>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- MODAL: CONFIRM RESET DEFAULT COPY                         -->
+  <!-- ========================================================= -->
+  <div id="reset-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div class="glass-card w-full max-w-sm rounded-3xl p-6 shadow-2xl animate-fade-up">
+      <h3 class="font-display font-bold text-lg text-white mb-1.5">Reset to Default Copy?</h3>
+      <p class="text-xs text-zinc-400 leading-relaxed mb-6">
+        This will restore the original headline, 3 checklist items, confirmation text, and footer copy. Your destination URL and click count will not be affected.
+      </p>
+      <div class="flex items-center justify-end gap-2.5">
+        <button id="cancel-reset-btn" type="button" class="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-semibold text-zinc-300 transition cursor-pointer">
+          Cancel
+        </button>
+        <button id="confirm-reset-btn" type="button" class="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-xs font-semibold text-white transition cursor-pointer">
+          Reset Copy
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- MODAL: CONFIRM RESET CLICK COUNTER                        -->
+  <!-- ========================================================= -->
+  <div id="reset-clicks-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div class="glass-card w-full max-w-sm rounded-3xl p-6 shadow-2xl animate-fade-up">
+      <h3 class="font-display font-bold text-lg text-white mb-1.5">Reset Click Counter?</h3>
+      <p class="text-xs text-zinc-400 leading-relaxed mb-6">
+        This will reset the total registration clicks back to 0. This action cannot be undone.
+      </p>
+      <div class="flex items-center justify-end gap-2.5">
+        <button id="cancel-reset-clicks-btn" type="button" class="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-semibold text-zinc-300 transition cursor-pointer">
+          Cancel
+        </button>
+        <button id="confirm-reset-clicks-btn" type="button" class="px-4 py-2.5 rounded-xl bg-rose-500 hover:bg-rose-600 text-xs font-semibold text-white transition cursor-pointer">
+          Reset to 0
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- APPLICATION LOGIC (STANDALONE + OPTIONAL CLOUD SYNC)      -->
+  <!-- ========================================================= -->
+  <!-- APPLICATION LOGIC (MONGODB REST API + JWT AUTH)           -->
+  <!-- ========================================================= -->
+  <script>
+    // =========================================================
+    // 1. BACKEND API CONFIGURATION
+    // Change this to your live Render/Railway URL when deploying
+    // =========================================================
+    const API_BASE_URL = 'http://localhost:5000/api';
+
+    const TOKEN_KEY = 'ope_media_admin_jwt_v1';
+    const EMAIL_KEY = 'ope_media_admin_email_v1';
+
+    // =========================================================
+    // 2. DEFAULT FALLBACK DATA
+    // =========================================================
+    const DEFAULT_COPY = {
+      brandName: 'OPE MEDIA',
+      headlineTop: 'In order to',
+      headlineMain: 'Start Building High-Value Digital Skills...',
+      subheading: 'You Will Need These 3 Things',
+      req1: 'An internet-connected smartphone, tablet or laptop',
+      req2: '1–2 hrs a day',
+      req3: 'A spirit of implementation and dedication',
+      confirmText: "YES! I have these 3 things and I'm ready to start learning and applying these skills.",
+      footerText: '© 2026 OPE MEDIA',
+    };
+
+    const DEFAULT_CONFIG = {
+      ...DEFAULT_COPY,
+      destinationUrl: 'https://wa.me/2348000000000',
+      ctaText: 'CLICK HERE TO REGISTER NOW!',
+      clicks: 0,
+    };
+
+    // =========================================================
+    // 3. JWT SESSION HELPERS (No credentials stored in code)
+    // =========================================================
+    function getAuthToken() {
+      try {
+        return sessionStorage.getItem(TOKEN_KEY) || '';
+      } catch (_) {
+        return '';
+      }
+    }
+
+    function getAdminEmail() {
+      try {
+        return sessionStorage.getItem(EMAIL_KEY) || '';
+      } catch (_) {
+        return '';
+      }
+    }
+
+    function saveAdminSession(token, email) {
+      try {
+        sessionStorage.setItem(TOKEN_KEY, token);
+        sessionStorage.setItem(EMAIL_KEY, email);
+      } catch (_) {}
+    }
+
+    function clearAdminSession() {
+      try {
+        sessionStorage.removeItem(TOKEN_KEY);
+        sessionStorage.removeItem(EMAIL_KEY);
+      } catch (_) {}
+    }
+
+    // =========================================================
+    // 4. APPLICATION STATE
+    // =========================================================
+    let initialLoaded = false;
+
+    const state = {
+      view: 'public', // 'public' | 'login' | 'admin'
+      adminEmail: getAdminEmail(),
+      isAdminAuthenticated: Boolean(getAuthToken()),
+      config: structuredClone(DEFAULT_CONFIG),
+    };
+
+    // =========================================================
+    // 5. HIDDEN /ADMIN ROUTING ENGINE
+    // =========================================================
+    function isAdminRoute() {
+      const path = (window.location.pathname || '').toLowerCase();
+      const hash = (window.location.hash || '').toLowerCase();
+      const params = new URLSearchParams(window.location.search || '');
+
+      const matchesPath = /\/admin(\.html)?\/?$/.test(path);
+      const matchesHash = hash === '#/admin' || hash === '#/admin/' || hash === '#admin' || hash === '#admin/';
+      const matchesQuery = params.has('admin');
+
+      return matchesPath || matchesHash || matchesQuery;
+    }
+
+    function navigateToAdmin() {
+      try {
+        if (!isAdminRoute()) {
+          window.location.hash = '#/admin';
+        }
+      } catch (_) {}
+      setView(state.isAdminAuthenticated ? 'admin' : 'login');
+    }
+
+    function navigateToPublic() {
+      try {
+        const url = new URL(window.location.href);
+        url.hash = '';
+        url.searchParams.delete('admin');
+        if (/\/admin(\.html)?\/?$/i.test(url.pathname)) {
+          url.pathname = url.pathname.replace(/\/admin(\.html)?\/?$/i, '/') || '/';
+        }
+        window.history.replaceState({}, '', url.pathname + url.search);
+      } catch (_) {
+        try {
+          window.location.hash = '';
+        } catch (__) {}
+      }
+      setView('public');
+    }
+
+    function syncViewFromRoute() {
+      if (isAdminRoute()) {
+        setView(state.isAdminAuthenticated ? 'admin' : 'login');
+      } else {
+        setView('public');
+      }
+    }
+
+    // =========================================================
+    // 6. UTILITIES
+    // =========================================================
+    function escapeHtml(str = '') {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function getMonogram(brandName = 'OPE MEDIA') {
+      const cleaned = brandName.trim();
+      if (!cleaned) return 'OPE';
+      return cleaned.split(/\s+/)[0].slice(0, 3).toUpperCase();
+    }
+
+    function isValidHttpsUrl(url) {
+      try {
+        const parsed = new URL(url);
+        return parsed.protocol === 'https:';
+      } catch (_) {
+        return false;
+      }
+    }
+
+    function formatConfirmHtml(text = '') {
+      const safe = escapeHtml(text);
+      return safe.replace(/^YES!/i, '<strong class="text-white font-bold">YES!</strong>');
+    }
+
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      const styleClass =
+        type === 'error'
+          ? 'border-rose-500/40 bg-rose-950/95 text-rose-100'
+          : 'border-emerald-500/35 bg-zinc-900/95 text-white';
+
+      const iconSvg =
+        type === 'error'
+          ? `<svg class="w-4 h-4 text-rose-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>`
+          : `<svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>`;
+
+      toast.className = `pointer-events-auto flex items-center gap-2.5 px-4 py-3 rounded-2xl border shadow-2xl backdrop-blur-xl text-xs font-medium animate-fade-up ${styleClass}`;
+      toast.innerHTML = `${iconSvg}<span>${escapeHtml(message)}</span>`;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(6px)';
+        toast.style.transition = 'all 0.25s ease';
+        setTimeout(() => toast.remove(), 260);
+      }, 3200);
+    }
+
+    // =========================================================
+    // 7. API CALLS (MONGODB BACKEND)
+    // =========================================================
+    async function fetchLiveConfig() {
+      try {
+        const res = await fetch(`${API_BASE_URL}/config`, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        state.config = { ...DEFAULT_CONFIG, ...data };
+      } catch (err) {
+        console.warn('Could not reach backend API, displaying default copy:', err.message);
+      }
+    }
+
+    async function verifyExistingSession() {
+      const token = getAuthToken();
+      if (!token) return;
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/admin/verify`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (!res.ok) {
+          clearAdminSession();
+          state.isAdminAuthenticated = false;
+          state.adminEmail = '';
+        } else {
+          const data = await res.json();
+          state.isAdminAuthenticated = true;
+          state.adminEmail = data.email || getAdminEmail();
+        }
+      } catch (_) {
+        // Keep current state if offline
+      }
+    }
+
+    async function initApp() {
+      syncViewFromRoute();
+      await Promise.all([fetchLiveConfig(), verifyExistingSession()]);
+      finishInitialLoad();
+      syncViewFromRoute();
+    }
+
+    function finishInitialLoad() {
+      if (initialLoaded) return;
+      initialLoaded = true;
+      document.getElementById('public-skeleton').classList.add('hidden');
+      document.getElementById('public-card').classList.remove('hidden');
+      renderPublicView();
+      if (state.view === 'admin') {
+        populateAdminDashboard();
+      }
+    }
+
+    async function persistConfigUpdate(partialPayload) {
+      const token = getAuthToken();
+      if (!token) {
+        showToast('Your session expired. Please sign in again.', 'error');
+        handleSignOut(true);
+        return false;
+      }
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/admin/config`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(partialPayload),
+        });
+
+        const data = await res.json().catch(() => ({}));
+
+        if (res.status === 401) {
+          showToast(data.message || 'Session expired. Please sign in again.', 'error');
+          handleSignOut(true);
+          return false;
+        }
+
+        if (!res.ok) {
+          showToast(data.message || 'Failed to save changes.', 'error');
+          return false;
+        }
+
+        state.config = { ...DEFAULT_CONFIG, ...data };
+        renderPublicView();
+        if (state.view === 'admin') {
+          populateAdminDashboard();
+        }
+        return true;
+      } catch (err) {
+        console.error('Save error:', err);
+        showToast('Cannot connect to backend server. Make sure it is running.', 'error');
+        return false;
+      }
+    }
+
+    // =========================================================
+    // 8. RENDERING: PUBLIC LANDING PAGE
+    // =========================================================
+    function renderPublicView() {
+      const c = state.config;
+      document.title = `${c.brandName || 'OPE MEDIA'} — ${c.headlineMain || 'Register Now'}`;
+
+      document.getElementById('public-monogram').textContent = getMonogram(c.brandName);
+      document.getElementById('public-brand-name').textContent = c.brandName || 'OPE MEDIA';
+      document.getElementById('public-headline-top').textContent = c.headlineTop || '';
+      document.getElementById('public-headline-main').textContent = c.headlineMain || '';
+      document.getElementById('public-subheading').textContent = c.subheading || '';
+      document.getElementById('public-req-1').textContent = c.req1 || '';
+      document.getElementById('public-req-2').textContent = c.req2 || '';
+      document.getElementById('public-req-3').textContent = c.req3 || '';
+      document.getElementById('public-confirm-text').innerHTML = formatConfirmHtml(c.confirmText || '');
+      document.getElementById('public-cta-text').textContent = c.ctaText || 'CLICK HERE TO REGISTER NOW!';
+      document.getElementById('secret-footer-trigger').textContent = c.footerText || '© 2026 OPE MEDIA';
+    }
+
+    // =========================================================
+    // 9. RENDERING: ADMIN DASHBOARD
+    // =========================================================
+    function populateAdminDashboard() {
+      const c = state.config;
+
+      document.getElementById('admin-user-email').textContent = state.adminEmail || '—';
+
+      // Quick Stats
+      document.getElementById('stat-total-clicks').textContent = (Number(c.clicks) || 0).toLocaleString();
+      document.getElementById('stat-current-url').textContent = c.destinationUrl || 'Not configured';
+
+      const validUrl = isValidHttpsUrl(c.destinationUrl);
+      const badgeEl = document.getElementById('stat-url-badge');
+      if (validUrl) {
+        badgeEl.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 text-[10px] font-semibold uppercase';
+        badgeEl.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Active';
+      } else {
+        badgeEl.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-400 text-[10px] font-semibold uppercase';
+        badgeEl.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span> Check URL';
+      }
+
+      // Primary Link Form
+      document.getElementById('input-destination-url').value = c.destinationUrl || '';
+      document.getElementById('input-cta-text').value = c.ctaText || '';
+
+      // Copy Editor Fields
+      document.getElementById('input-headline-top').value = c.headlineTop || '';
+      document.getElementById('input-headline-main').value = c.headlineMain || '';
+      document.getElementById('input-subheading').value = c.subheading || '';
+      document.getElementById('input-req-1').value = c.req1 || '';
+      document.getElementById('input-req-2').value = c.req2 || '';
+      document.getElementById('input-req-3').value = c.req3 || '';
+      document.getElementById('input-confirm-text').value = c.confirmText || '';
+      document.getElementById('input-footer-text').value = c.footerText || '';
+    }
+
+    // =========================================================
+    // 10. VIEW SWITCHING
+    // =========================================================
+    function setView(viewName) {
+      state.view = viewName;
+      document.getElementById('public-view').classList.toggle('hidden', viewName !== 'public');
+      document.getElementById('admin-login-view').classList.toggle('hidden', viewName !== 'login');
+      document.getElementById('admin-dashboard-view').classList.toggle('hidden', viewName !== 'admin');
+
+      if (viewName === 'admin') {
+        populateAdminDashboard();
+        // Refresh latest stats & clicks from MongoDB when opening dashboard
+        fetchLiveConfig().then(() => {
+          if (state.view === 'admin') populateAdminDashboard();
+        });
+      } else if (viewName === 'login') {
+        document.getElementById('auth-error-box').classList.add('hidden');
+        setTimeout(() => document.getElementById('auth-email-input').focus(), 60);
+      } else {
+        renderPublicView();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // =========================================================
+    // 11. ACTIONS: AUTH, CTA CLICK, SAVE LINK, SAVE COPY, RESETS
+    // =========================================================
+    async function handleAuthSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('auth-email-input').value.trim();
+      const password = document.getElementById('auth-password-input').value;
+      const errorBox = document.getElementById('auth-error-box');
+      const submitBtn = document.getElementById('auth-submit-btn');
+
+      errorBox.classList.add('hidden');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Signing In...';
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/admin/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const data = await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+          errorBox.textContent = data.message || 'Invalid email or password.';
+          errorBox.classList.remove('hidden');
+        } else {
+          state.isAdminAuthenticated = true;
+          state.adminEmail = data.email;
+          saveAdminSession(data.token, data.email);
+          document.getElementById('auth-password-input').value = '';
+          showToast('Signed in to OPE MEDIA Admin.');
+          setView('admin');
+        }
+      } catch (err) {
+        errorBox.textContent = 'Unable to reach backend server. Make sure your Node/MongoDB API is running.';
+        errorBox.classList.remove('hidden');
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Sign In';
+    }
+
+    function handleSignOut(stayOnLogin = false) {
+      clearAdminSession();
+      state.isAdminAuthenticated = false;
+      state.adminEmail = '';
+      if (stayOnLogin) {
+        setView('login');
+      } else {
+        showToast('Signed out successfully.');
+        navigateToPublic();
+      }
+    }
+
+    async function handleCtaClick() {
+      const checkbox = document.getElementById('confirm-checkbox');
+      const confirmBox = document.getElementById('confirm-box');
+
+      if (!checkbox.checked) {
+        confirmBox.classList.remove('animate-shake');
+        void confirmBox.offsetWidth;
+        confirmBox.classList.add('animate-shake', 'border-rose-500/70', 'bg-rose-500/10');
+        showToast('Please confirm you have these 3 things to continue', 'error');
+
+        setTimeout(() => {
+          confirmBox.classList.remove('border-rose-500/70', 'bg-rose-500/10');
+        }, 1200);
+        return;
+      }
+
+      const targetUrl = isValidHttpsUrl(state.config.destinationUrl)
+        ? state.config.destinationUrl
+        : DEFAULT_CONFIG.destinationUrl;
+      window.open(targetUrl, '_blank', 'noopener,noreferrer');
+
+      // Record click in MongoDB
+      try {
+        const res = await fetch(`${API_BASE_URL}/config/click`, {
+          method: 'POST',
+          keepalive: true,
+        });
+        if (res.ok) {
+          const data = await res.json();
+          state.config.clicks = data.clicks;
+        }
+      } catch (_) {}
+    }
+
+    async function handleSavePrimaryLink(e) {
+      e.preventDefault();
+      const urlInput = document.getElementById('input-destination-url').value.trim();
+      const ctaInput = document.getElementById('input-cta-text').value.trim();
+
+      if (!isValidHttpsUrl(urlInput)) {
+        showToast('Please enter a valid URL starting with https://', 'error');
+        document.getElementById('input-destination-url').focus();
+        return;
+      }
+
+      const btn = document.getElementById('save-link-btn');
+      btn.disabled = true;
+
+      const ok = await persistConfigUpdate({
+        destinationUrl: urlInput,
+        ctaText: ctaInput || DEFAULT_CONFIG.ctaText,
+      });
+
+      if (ok) showToast('Registration link saved & published live!');
+      btn.disabled = false;
+    }
+
+    async function handleSaveFullSettings(e) {
+      e.preventDefault();
+      const btn = document.getElementById('save-all-settings-btn');
+      btn.disabled = true;
+      btn.textContent = 'Saving...';
+
+      const ok = await persistConfigUpdate({
+        headlineTop: document.getElementById('input-headline-top').value.trim(),
+        headlineMain: document.getElementById('input-headline-main').value.trim(),
+        subheading: document.getElementById('input-subheading').value.trim(),
+        req1: document.getElementById('input-req-1').value.trim(),
+        req2: document.getElementById('input-req-2').value.trim(),
+        req3: document.getElementById('input-req-3').value.trim(),
+        confirmText: document.getElementById('input-confirm-text').value.trim(),
+        footerText: document.getElementById('input-footer-text').value.trim() || DEFAULT_COPY.footerText,
+      });
+
+      if (ok) showToast('Copy changes saved & published!');
+      btn.disabled = false;
+      btn.textContent = 'Save Changes';
+    }
+
+    async function handleConfirmResetCopy() {
+      const btn = document.getElementById('confirm-reset-btn');
+      btn.disabled = true;
+
+      const ok = await persistConfigUpdate(DEFAULT_COPY);
+      document.getElementById('reset-modal').classList.add('hidden');
+      if (ok) showToast('Default copy restored.');
+      btn.disabled = false;
+    }
+
+    async function handleConfirmResetClicks() {
+      const btn = document.getElementById('confirm-reset-clicks-btn');
+      btn.disabled = true;
+
+      const ok = await persistConfigUpdate({ clicks: 0 });
+      document.getElementById('reset-clicks-modal').classList.add('hidden');
+      if (ok) showToast('Click counter reset to 0.');
+      btn.disabled = false;
+    }
+
+    // =========================================================
+    // 12. EVENT LISTENERS & SECRET ADMIN TRIGGERS
+    // =========================================================
+    window.addEventListener('hashchange', syncViewFromRoute);
+    window.addEventListener('popstate', syncViewFromRoute);
+
+    // Hidden Keyboard Shortcut: Ctrl+Shift+A / Cmd+Shift+A
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'a') {
+        e.preventDefault();
+        navigateToAdmin();
+      }
+    });
+
+    // Hidden Footer Easter Egg: Click copyright 5 times within 3 seconds
+    let footerTapCount = 0;
+    let footerTapTimer = null;
+    document.getElementById('secret-footer-trigger').addEventListener('click', () => {
+      footerTapCount += 1;
+      if (footerTapTimer) clearTimeout(footerTapTimer);
+
+      if (footerTapCount >= 5) {
+        footerTapCount = 0;
+        navigateToAdmin();
+        return;
+      }
+
+      footerTapTimer = setTimeout(() => {
+        footerTapCount = 0;
+      }, 3000);
+    });
+
+    // Public CTA Click
+    document.getElementById('public-cta-btn').addEventListener('click', handleCtaClick);
+
+    // Auth Screen Controls
+    document.getElementById('login-back-btn').addEventListener('click', navigateToPublic);
+    document.getElementById('admin-auth-form').addEventListener('submit', handleAuthSubmit);
+
+    document.getElementById('toggle-password-btn').addEventListener('click', () => {
+      const input = document.getElementById('auth-password-input');
+      const isHidden = input.type === 'password';
+      input.type = isHidden ? 'text' : 'password';
+      document.getElementById('eye-icon-open').classList.toggle('hidden', isHidden);
+      document.getElementById('eye-icon-closed').classList.toggle('hidden', !isHidden);
+    });
+
+    // Admin Header Controls
+    document.getElementById('admin-view-public-btn').addEventListener('click', navigateToPublic);
+    document.getElementById('admin-logout-btn').addEventListener('click', () => handleSignOut(false));
+
+    // Test Live Link Button
+    document.getElementById('test-live-link-btn').addEventListener('click', () => {
+      const url = document.getElementById('input-destination-url').value.trim() || state.config.destinationUrl;
+      if (!isValidHttpsUrl(url)) {
+        showToast('Enter a valid https:// URL first.', 'error');
+        return;
+      }
+      window.open(url, '_blank', 'noopener,noreferrer');
+    });
+
+    // Forms
+    document.getElementById('primary-link-form').addEventListener('submit', handleSavePrimaryLink);
+    document.getElementById('full-settings-form').addEventListener('submit', handleSaveFullSettings);
+
+    // Reset Copy Modal Controls
+    document.getElementById('reset-copy-btn').addEventListener('click', () => {
+      document.getElementById('reset-modal').classList.remove('hidden');
+    });
+    document.getElementById('cancel-reset-btn').addEventListener('click', () => {
+      document.getElementById('reset-modal').classList.add('hidden');
+    });
+    document.getElementById('reset-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'reset-modal') {
+        document.getElementById('reset-modal').classList.add('hidden');
+      }
+    });
+    document.getElementById('confirm-reset-btn').addEventListener('click', handleConfirmResetCopy);
+
+    // Reset Clicks Modal Controls
+    document.getElementById('reset-clicks-btn').addEventListener('click', () => {
+      document.getElementById('reset-clicks-modal').classList.remove('hidden');
+    });
+    document.getElementById('cancel-reset-clicks-btn').addEventListener('click', () => {
+      document.getElementById('reset-clicks-modal').classList.add('hidden');
+    });
+    document.getElementById('reset-clicks-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'reset-clicks-modal') {
+        document.getElementById('reset-clicks-modal').classList.add('hidden');
+      }
+    });
+    document.getElementById('confirm-reset-clicks-btn').addEventListener('click', handleConfirmResetClicks);
+
+    // Boot Application
+    initApp();
+  </script>
+</body>
+</html>
